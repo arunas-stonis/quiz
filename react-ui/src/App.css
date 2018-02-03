@@ -19,7 +19,14 @@
 }
 
 .App-intro {
-  font-size: large;
+  text-align: left;
+}
+
+.App-footer {
+  background-color: #222;
+  height: 70px;
+  padding: 20px;
+  color: white;
 }
 
 @keyframes App-logo-spin {
