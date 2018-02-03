@@ -93,7 +93,7 @@ class App extends React.Component<{}, AppState> {
           </div> 
 
           <div className="App-footer">
-            Thank you!
+            Good luck!
           </div>
 
         </div>
