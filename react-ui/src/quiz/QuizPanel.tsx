@@ -8,7 +8,7 @@ import { green500, red500 } from 'material-ui/styles/colors';
 
 interface QuizPanelProps {
   questions: Question[];
-  answered: boolean;
+  score?: number;
   onChange: (qIndex: number, oIndex: number) => void;
   onFinish: () => void;
 }
@@ -44,7 +44,7 @@ class QuizPanel extends React.Component<QuizPanelProps, QuizPanelState> {
 
   render() {
     const { stepIndex } = this.state;
-    const { questions, onChange, onFinish, answered } = this.props;
+    const { questions, onChange, onFinish, score } = this.props;
 
     return (
       <div style={{ maxWidth: 600, margin: 'auto' }}>
@@ -100,7 +100,7 @@ class QuizPanel extends React.Component<QuizPanelProps, QuizPanelState> {
             </Step>
           )}
         </Stepper>
-        {!answered
+        {score === undefined
           ? <div style={{ marginTop: '20px', marginBottom: '20px', textAlign: 'left' }}>
               <RaisedButton 
                 label="Finish"
@@ -109,12 +109,13 @@ class QuizPanel extends React.Component<QuizPanelProps, QuizPanelState> {
               />
             </div>
           : <div style={{ marginTop: '20px', marginBottom: '20px', textAlign: 'left' }}>
-              <h3>Score: 
+              <h3>Score: {score * 100}%</h3>
+              <p>
                 {questions
                   .map(question => (question.answer === question.chosen ? 1 : 0))
                   .reduce((prev: number, curr: number) => prev + curr, 0)
                 }/{questions.length}
-              </h3>
+              </p>
             </div>
         }
       </div>
