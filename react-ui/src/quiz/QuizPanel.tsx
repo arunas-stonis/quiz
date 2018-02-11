@@ -6,11 +6,11 @@ import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import { green500, red500 } from 'material-ui/styles/colors';
 
-interface QuizPanelProps {
+export interface QuizPanelProps {
   questions: Question[];
   score?: number;
   onChange: (qIndex: number, oIndex: number) => void;
-  onFinish: () => void;
+  onFinish: (questions: Question[]) => void;
 }
 
 interface QuizPanelState {
@@ -104,7 +104,7 @@ class QuizPanel extends React.Component<QuizPanelProps, QuizPanelState> {
           ? <div style={{ marginTop: '20px', marginBottom: '20px', textAlign: 'left' }}>
               <RaisedButton 
                 label="Finish"
-                onClick={() => onFinish()}
+                onClick={() => onFinish(questions)}
                 secondary={true}
               />
             </div>
